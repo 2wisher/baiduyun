@@ -1,0 +1,970 @@
+// 首页样式
+body {
+    // 底部有轮播。超出页面，会出现滚动条，手动设置横向溢出隐藏
+    overflow-x: hidden;
+}
+// .banner区域
+.bannerBox {
+    width: 100%;
+    height: 620px;
+    background: url('../images/index/banner1-bg.jpg') no-repeat center;
+    position: relative;
+    // overflow: hidden;
+    // 广告部分
+    .banner {
+        width: 100%;
+        height: 100%;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+        li {
+            background: #000;
+            width: 100%;
+            height: 100%;
+            display: none;
+            position: absolute;
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                .img_box {
+                    position: absolute;
+                    img{
+                        height: 360px;
+                    }
+                }
+                .bannerContent {
+                    position: relative;
+                    height: 100%;
+                    overflow: hidden;
+                    .l_b_tiitle {
+                        color: #fff;
+                        h1 {
+                            margin: 100px 0 40px;
+                            color: #fff;
+                            font-size: 42px;
+                            font-weight: 400;
+                        }
+                        p {
+                            color: #fff;
+                            font-size: 18px;
+                        }
+                        .button_box {
+                            display: block;
+                            width: 130px;
+                            height: 36px;
+                            border: 1px solid #fff;
+                            box-sizing: border-box;
+                            text-align: center;
+                            line-height: 36px;
+                            margin-top: 80px;
+                        }
+                        .button_box:hover {
+                            background-color: #fff;
+                            color: #000;    
+                        }
+                    }
+                    .img_box {
+                        right: 0;
+                        bottom: 80px;
+                    }
+                }
+            }
+        }
+        li:first-child {
+            display: block;
+        }
+        li:first-child,li:nth-child(2) {
+            background: url('../images/index/banner1-bg.jpg') no-repeat center;
+            a {
+                .img_box {
+                    bottom: -30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    img {
+                        height: 620px;
+                    }
+                }
+            }
+        }
+        li:nth-child(2) {
+            background: url('../images/index/banner2-bg.jpg') no-repeat center;
+        }
+    }
+    // 按钮部分
+    .banner_arrow {
+        display: block;
+        width: 100px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    .banner_arrow:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+    .banner_arrow::after {
+        content: "";
+        display: block;
+        width: 25px;
+        height: 50px;
+        position: absolute;
+        background: url('../images/index/banner-arrow.png') no-repeat left center;
+        background-size: 50px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .right_arrow::after {
+        background: url('../images/index/banner-arrow.png') no-repeat right center;
+    }
+    .left_arrow {
+        left: 0px;
+    }
+    .right_arrow {
+        right: 0px;
+    }
+    // 小条部分
+    .bannerDotted {
+        position: absolute;
+        bottom: 140px;
+        left: 50%;
+        transform: translateX(-50%);
+        li {
+            width: 24px;
+            height: 3px;
+            background-color: rgba(255,255,255,0.2);
+            margin-right: 6px;
+            cursor: pointer;
+        }
+        li:last-child {
+            margin-right: 0px;
+        }
+        .active {
+            background-color: #fff;
+        }
+    }
+    
+    // 推荐广告
+    .commandBanner {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        .command {
+            width: 100%;
+            height: 110px;
+            li {
+                width: 295px;
+                height: 100%;
+                padding: 24px 30px;
+                box-sizing: border-box;
+                div {
+                    margin-right: 40px;
+                }
+                h3 {
+                    line-height: 30px;
+                    color: #fff;
+                    font-weight: 400;
+                }
+                p {
+                    color:#a5a5a7;
+                }
+            }
+            li:hover{
+                background-color: #000;
+            }
+        }
+    }
+
+}
+
+
+// 通用样式
+// 按钮基本样式
+.button_link {
+    display: block;
+    width: 157px;
+    height: 36px;
+    box-sizing: border-box;
+    border: 1px solid #d2d2d2;
+    text-align: center;
+    line-height: 34px;
+}
+.button_link:hover {
+    border: 1px solid #108cee;
+    color: #fff;
+    background-color: #108cee;
+    transition: all 0.3s;
+}
+// 模块的标题基本样式
+.divTitle {
+    text-align: center;
+    margin-bottom: 60px;
+    h2 {
+        font-size: 24px;
+        line-height: 60px;
+        font-weight: 400;
+    }
+    p {
+        color: #999;
+        line-height: 28px;
+    }
+}
+
+
+
+// 网站介绍区域
+.introduction {
+    width: 100%;
+    padding-top: 40px;
+    // 左侧图片
+    .l_intro_picture {
+        position: relative;
+        height: 552px;
+        .intro_bg {
+            width: 1200px;
+            height: 552px;
+            position: absolute;
+            left: -480px;
+            top: 0px;
+            img {
+                width: 100%;
+            }
+            .blackDotted {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background-image: radial-gradient(
+                    at bottom,
+                    #333,
+                    #ccc
+                );
+                transform: rotateZ(-45deg);
+                position: absolute;
+                top: 66px;
+                right: 574px;
+            }
+            .blackDotted:last-child {
+                top: 26px;
+                right: 304px;
+            }
+        }
+    }
+    // 右侧具体项目
+    .r_intro_text {
+        width: 474px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        position: relative;
+        .intro_items {
+            width: 100%;
+            position: absolute;
+            right: 0;
+            top: 20px;
+            display: none;
+            opacity: 0;
+            .introduceHeader {
+                text-align: left;
+                margin-bottom: 20px;
+                p {
+                    margin-top: 10px;
+                    color: #666;
+                }
+            }
+            .introduceContent {
+                .button_link {
+                    border-color: #7d7d7d;
+                    color: #666;
+                    margin-bottom: 50px;
+                }
+                .button_link:hover {
+                    border: 1px solid #108cee;
+                    color: #fff;
+                }
+                li {
+                    width: 100%;
+                    padding-left: 50px;
+                    height: 56px;
+                    box-sizing: border-box;
+                    margin-top: 20px;
+                    position: relative;
+                    i {
+                        font-size: 32px;
+                        position: absolute;
+                        top: 10px;
+                        left: 0;
+                    }
+                    h4 {
+                        font-size: 16px;
+                        line-height: 30px;
+                        font-weight: 400;
+                    }
+                    p {
+                        line-height: 26px;
+                        color: #666666;
+                    }
+                }
+            }
+        }
+        .show_intro {
+            top: 0;
+            display: block;
+            opacity: 1;
+        }
+    }
+}
+
+
+
+// 解决方案
+.proSolution {
+    width: 100%;
+    height: 596px;
+    background: url("../images/index/solution-website.png") no-repeat top center;
+    background-color: rgb(0,0,0);
+    // 左边列表
+    .l_solutionTitle {
+        width: 230px;
+        height: 596px;
+        padding-top: 20px;
+        box-sizing: border-box;
+        background-color: rgba(0,0,0,0.7);
+        li {
+            padding: 0 15px;
+            height: 92px;
+            a {
+                display: block;
+                width: 100%;
+                height: 91px;
+                border-top: 1px solid #333;
+                padding: 15px 0 19px 25px;
+                box-sizing: border-box;
+                h4 {
+                    font-size: 16px;
+                    color: #fff;
+                    font-weight: 400;
+                    line-height: 30px;
+                }
+                p {
+                    color: #666;
+                }
+            }
+        }
+        li:first-child {
+            a {
+                border-top: none;
+            }
+        }
+        .show_title {
+			background-image: linear-gradient(
+                to right,
+                #00a1ff,
+                #0b61ff
+            );
+            padding-left: 25px;
+            transition: 0.3s;
+            a {
+                border-top: 1px solid transparent;
+             }
+            p {
+                color: #fff;
+                opacity: 0.75;
+            }
+        }
+    }
+    // 右边解决方案详情
+    .r_solutionDetail {
+        width: 712px;
+        height: 400px;
+        margin-top: 77px;
+        margin-right: 70px;
+        position: relative;
+        .sol_detail_items {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 0;
+            opacity: 1;
+        }
+        .show_items {
+            display: block;
+            top :0px;
+            opacity: 1;
+        }
+        // 详情标题/
+        .detailHeader {
+            text-align: left;
+            margin-bottom: 30px;
+            h2 {
+                color: #fff;
+                margin-bottom: 10px;
+            }
+            p {
+                color: #c6c6c6;
+            }
+        }
+        // 详情内容/
+        .detailContent {
+            .button_link {
+                color: #c6c6c6;
+            }
+            .button_link:hover {
+                color: #fff;
+            }
+            p {
+                margin-top: 34px;
+                color: #c6c6c6;
+            }
+            p:nth-child(4) {
+                color: #fff;
+            }
+            // 客户案例
+            .logoList {
+                li {
+                    height: 60px;
+                    margin-left: 40px;
+                    margin-top: 10px;
+                    img  {
+                        height: 60px;
+                    }
+                }
+                li:first-child {
+                    margin-left: 0;
+                }
+            }
+            // 相关产品
+            .aboutPros {
+                li{
+                    margin-top: 10px;
+                    margin-right: 12px;
+                    .button_link {
+                        text-align: left;
+                        padding-left: 10px;
+                        box-sizing: border-box;
+                        width: 150px;
+                        font-size: 12px;
+                        color: #fff;
+                        background-color: rgba(64,64,64,0.6);
+                        opacity: 0.8;
+                        i {
+                            font-size: 16px;
+                            color: #666;
+                            margin-right: 10px;
+                        }
+                    }
+                    .button_link:hover {
+                        // color: #fff;
+                        background-color: #108cee;
+                        i {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+
+// 云产品区域
+.cloudProducts {
+    width: 100%;
+    height: 681px;
+    background-color: #f3f3f3;
+    padding-top: 50px;
+    padding-bottom: 70px;
+    // 产品标题
+    .cloudProductsTitle {
+        margin-bottom: 120px;
+    }
+    // 产品列表
+    .productsList {
+        position: relative;
+        .listsBox {
+            width: 275px;
+            height: 388px;
+            background-color: #fff;
+            border-right: 1px solid #dddddd;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .listsBox:last-child {
+            border-right: none;
+        }
+        // 大小盒子公共h4标题
+        h4 {
+            font-weight: 400;
+            line-height: 26px;
+            i {
+                font-size: 20px;
+                margin-right: 16px;
+            }
+        }
+        // 小盒子
+        .smallList {
+            width: 275px;
+            height: 388px;
+            padding: 26px 26px 26px 33px;
+            box-sizing: border-box;
+            // display: none;
+            // 标题 
+            .productsTitle {
+                height: 69px;
+                border-bottom: 1px solid #e9e9e9;
+                margin-bottom: 20px;
+                h3 {
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+                p {
+                    margin-top: 8px;
+                    font-size: 18px;
+                    color: #a6a6a9;
+                }
+            }
+            ul {
+                li {
+                    width: 215px;
+                    height: 27px;
+                    line-height: 27px;
+                    margin-bottom: 27px;
+                    border-right: none;
+                }
+            }
+            a {
+                color: #999;
+                span {
+                    margin-left: 10px;
+                }
+            }
+        }
+        // 大盒子
+        .bigList {
+            width: 626px;
+            height: 573px;
+            background-color: #fff;
+            display: none;
+            h3 {
+                width: 100%;
+                height: 90px;
+                background-color: #1e1e28;
+                color: #fff;
+                line-height: 90px;
+                padding-left: 40px;
+                box-sizing: border-box;
+                font-size: 20px;
+                font-weight: 400;
+                span {
+                    margin-left: 20px;
+                    color: #a6a6a9;
+                }
+            }
+            li {
+                width: 100%;
+                height: 121px;
+                padding-top: 20px;
+                box-sizing: border-box;
+                border-top: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+                .productsDetail {
+                    width: 560px;
+                    margin-left: 40px;
+                    border-bottom: 1px solid #dddddd;
+                    padding-bottom: 20px;
+                    position: relative;
+                    box-sizing: border-box;
+                    p {
+                        line-height: 26px;
+                        padding-left: 36px;
+                        span {
+                            color: red;
+                        }
+                    }
+                    p:nth-child(2),p>small {
+                        color: #999;
+                        font-size: 14px;
+                    }
+                    .button_link {
+                        position: absolute;
+                        top: 24px;
+                        right: 0px;
+                    }
+                }
+            }
+            li:last-child {
+                .productsDetail {
+                    border-bottom: none;
+                }
+            }
+            li:hover {
+                background-color: #f9f9f9;
+                border-top: 1px solid #dddddd;
+                border-bottom: 1px solid #dddddd;
+            }
+        }
+        // 切换盒子
+        .changeBox {
+            width: 626px;
+            height: 573px;
+            top: -90px;
+            z-index: 11;
+            box-shadow:  0 0 20px #ccc;
+            .smallList {
+                display: none;
+            }
+            .bigList {
+                display: block;
+            }
+        }
+    }
+}
+
+
+// 数据中心介绍
+.datasCenter {
+    width: 100%;
+    height: 550px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    background: url('../images/index/data-center-bg.png') no-repeat top center;
+    // background-position: 
+    // background-position-y: 
+
+    // 数据中心标题。
+    .datasCenterTitle {
+        margin-bottom: 90px;
+        h2 {
+            color: #fff;
+        }
+        p {
+            color: #a2a1aa;
+        }
+    }
+
+    // 文字介绍
+    .textIntroduce {
+        width: 490px;
+        p {
+            color: #ccc;
+            line-height: 24px;
+            margin-bottom: 20px;
+        }
+    }
+
+    // 图片介绍
+    .imgIntroduce {
+        width: 578px;
+        height: 352px;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+
+
+// 第三方服务商
+.thirdServicer {
+    width: 100%;
+    height: 550px;
+    padding-top: 100px;
+    box-sizing: border-box;
+    .thirdServicerTitle {
+        margin-bottom: 40px;
+    }
+
+    // 第三方
+    .thirdServicerEXP {
+        width: 100%;
+        ul {
+            width: 100%;
+            height: 135px;
+            border-bottom: 1px solid #efefef;
+            overflow: hidden;
+            box-sizing: border-box;
+            li {
+                width: 50%;
+                height: 100%;
+                float: left;
+                border-right: 1px solid #efefef;
+                box-sizing: border-box;
+                padding-left: 110px;
+                position: relative;
+                >a {
+                    font-size: 16px;
+                    line-height: 40px;
+                }
+                p {
+                    a {
+                        border-right: 1px solid #efefef;
+                        padding: 0 10px;
+                        line-height: 24px;
+                    }
+                    a:last-child,a:nth-child(5n) {
+                        border-right: none;
+                        padding-right: 90px;
+                    }
+                    a:first-child,a:nth-child(6n) {
+                        padding-left: 0px;
+                    }
+                }
+            }
+            li::before {
+                content: "";
+                display: block;
+                width: 48px;
+                height: 48px;
+                background: url('../images/index/cloudMarket-icons.png') no-repeat left top;
+                position: absolute;
+                left: 25px;
+                top: 10px;
+            }
+            li:last-child {
+                border-right: none;
+            }
+            li:last-child::before {
+                background-position: left -49px;
+            }
+        }
+        ul:last-child {
+            border-bottom: none;
+            li {
+                padding-top: 50px;
+            }
+            li:first-child::before {
+                background-position: left -96px;
+                top: 60px;
+            }
+            li:last-child::before {
+                background-position: left -144px;
+                top: 60px;
+            }
+        }
+    }
+
+}
+
+
+// 数据支持区域
+.datasSupport {
+    width: 100%;
+    height: 523px;
+    background: url('../images/index/data_bg.png') no-repeat top center;
+    background-size: auto 523px;
+    padding-top: 50px;
+    box-sizing: border-box;
+    // 数据支持标题
+    .datasSupportTitle {
+        h2 {
+            color: #fff;
+        }
+        p {
+            color: #a2a1aa;
+        }
+    }
+    // 数据展示
+    .datasShow{
+        display: flex;
+        div {
+            flex: 2;
+            .datasIcon {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                background: url('../images/index/data-icons.png') no-repeat left top;
+                margin-right: 20px;
+            }
+            span {
+                font-size: 40px;
+                color: #fff;
+                font-family: 'Lingoes Unicode';
+            }
+            .characteristic {
+                padding-left: 50px;
+                font-size: 14px;
+                color: #fff;
+            }
+
+        }
+        div:nth-child(2) {
+            .datasIcon {
+                background-position: left -71px;
+            }
+        }
+        div:last-child {
+            flex: 1;
+            .datasIcon {
+                background-position: left -48px;
+            }
+        }
+    }
+}
+
+
+// 底部轮播---服务认证
+.serviceIdentification {
+    width: 100%;
+    height: 505px;
+    padding-top: 116px;
+    box-sizing: border-box;
+    .s_i_box {
+        position: relative;
+        // 左侧服务标题及按钮
+        .left_titleAndBtns {
+            width: 266px;
+            text-align: left;
+            a {
+                display: block;
+                width: 50px;
+                height: 50px;
+                border: 1px solid #ababab;
+                color: #ababab;
+                background-color: #f2f2f2;
+                text-align: center;
+                line-height: 50px;
+                font-size: 40px;
+                font-family: '宋体';
+                float: left;
+                margin-right: 10px;
+                margin-top: 50px;
+            }
+            a:hover {
+                border: 1px solid #108cee;
+                color: #fff;
+                background-color: #108cee;
+                transition: 0.3s;
+            }
+        }
+    
+        // 右侧轮播--服务认证
+        .right_serviceId {
+            width: 87%;
+            height: 390px;
+            padding-top: 20px;
+            overflow: hidden;
+            position: absolute;
+            left: 400px;
+            top: -30px;
+            ul {
+                width: 3696px;
+                li {
+                    width: 310px;
+                    height: 320px;
+                    box-shadow: 0 0 20px #d8d8d8;
+                    padding: 34px 24px 24px;
+                    text-align: center;
+                    box-sizing: border-box;
+                    margin-left: 26px;
+                    margin-top: 0;
+                    h3{
+                        font-size: 14px;
+                        margin-bottom: 14px;
+                        font-weight: 400;
+                        color: #666;
+                    }
+                    p {
+                        text-align: left;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: #666;
+                    }
+                    .idenLogo {
+                        width: 99px;
+                        height: 99px;
+                        margin: 0 auto 30px;
+                        background: url('../images/index/iso-1x.png') no-repeat left top;
+                    }
+                    .img_22301 {
+                        background-position-y: -297px;
+                    }
+                    .img_27017 {
+                        background-position-y: -496px;
+                    }
+                    .img_27018 {
+                        background-position-y: -397px;
+                    }
+                    .img_29151 {
+                        background-position-y: -596px;
+                    }
+                    .img_CSA {
+                        width: 124px;
+                        background:url('../images/index/csa.2x.png') no-repeat center;
+                        background-size: auto 83px;
+                    }
+                    .img_TRUCS {
+                        width: 119px;
+                        background:url('../images/index/trucs.2x.png') no-repeat center;
+                        background-size: auto 85px;
+                    }
+                    .img_DJCP {
+                        width: 61px;
+                        background:url('../images/index/DJCP.2x.png') no-repeat center;
+                        background-size: auto 85px;
+                    }
+                    .img_ITSS {
+                        height: 50px;
+                        background-position-y: -695px;
+                    }
+                    .img_9001 {
+                        background-position-y: -198px;
+                    }
+                    .img_20000 {
+                        background-position-y: -99px;
+                    }
+                    .img_27001 {
+                        background-position-y: -1px;
+                    }
+                }
+                li:hover {
+                    margin-top: -10px;
+                    transition: 0.3s;
+                }
+                // 第一项移动距离
+                .moveToLeft {
+                    margin-left: -336px;
+                    transition: 0.5s;
+                }
+            }
+        }
+
+    }
+
+}
+
+
+// 底部banner
+.footerBanner {
+    width: 100%;
+    height: 241px;
+    background: url('../images/index/register_bg.png') no-repeat;
+    background-size: cover;
+    text-align: center;
+    overflow: hidden;
+    .f_b_content {
+        margin-top: 50px;
+        h2 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 60px;
+        }
+        p {
+            font-size: 16px;
+            color: #fff;
+        }
+        .button_link {
+            color: #fff;
+            border: 1px solid #fff;
+            margin: 26px auto 0;
+        }
+        .button_link:hover {
+            color: #108cee;
+            background-color: #fff;
+        }
+    }
+}
