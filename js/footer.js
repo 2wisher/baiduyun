@@ -1,3 +1,25 @@
+
+// 侧边栏js
+
+$(window).on('scroll',function(){
+    // 获取滚动条卷去内容高度
+    var scrollToTop = $(this).scrollTop();
+
+    // 判断
+    if (scrollToTop >= 200 ) {
+        $('.backTop').css('display','block');
+    }else {
+        $('.backTop').css('display','none');
+    }
+});
+
+$('.backTop').click(function(){
+    $('html,bofy').animate({
+        scrollTop:0
+    },1000);
+});
+
+
 // 底部js
 
 // 鼠标进入小图标按钮，显示二维码，字体变色

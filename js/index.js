@@ -82,18 +82,128 @@ $('.bannerDotted').children('li').click (function(){
     imgAni();
 });
 
-// 推荐广告
-
-
-
 
 
 
 // 网站介绍区域
 
+// 小圆按钮--------,鼠标进入显示图片并且添加虚线动画
+// 边框旋转定时器
+var borderTimer;
+$('.circle_btns').mouseenter(function(){
+    // 图片显示
+    $(this).find('.btns_bg img').animate({opacity:1},100);
+    // 文字右移
+    $(this).find('.btns_text').animate({left:60},100);
+    // 虚线显示
+    $(this).find('.border_dashed').css({
+        opacity:1,
+        'animation-play-state': 'running'
+    });
+});
 
+// 设置动画标识  true--动画中；false--不动画
+var isMove = false;
+// 小圆按钮-------对应的鼠标离开事件
+$('.circle_btns').mouseleave(function(){
+    console.log(isMove);
+    if ( !isMove ) {
+        // 图片隐藏
+        $(this).find('.btns_bg img').animate({opacity:0},100);
+    }
+    // 文字左移
+    $(this).find('.btns_text').animate({left:0},100);
+    // 虚线隐藏
+    $(this).find('.border_dashed').css({
+        opacity:0,
+        'animation-play-state': 'paused'
+    });
+});
 
+// 小圆按钮-------鼠标点击事件
+$('.circle_btns').on('click',function(){
+    if (!isMove) {
+        
+        isMove = true;
+        // 获取网站介绍模块的名字,路径,标题文字
+        var imgName = $(this).find('img').attr('imgName');
+        var imgSrc = $(this).find('img').attr('src');
+        var imgText = $(this).find('span').text();
 
+        // 获取中间的名字,路径,标题文字
+        var cen_imgName = $('.intro_center').find('img').attr('imgName');
+        var cen_imgSrc = $('.intro_center').find('img').attr('src');
+        var cen_imgText = $('.intro_center').find('img').attr('imgText');
+
+        // 标题文字消失,1s后更新为中间的文字和图片
+        $(this).find('span').stop().animate({opacity:0},100);
+
+        // 动画图标----将图标移动到指定位置,并且宽高也变化
+        // 保留点击的li里的图片初始大小
+        var imgX = $(this).find('.btns_bg').offset().left;
+        var imgY = $(this).find('.btns_bg').offset().top;
+        var imgSize = $(this).find('.btns_bg').css('width');
+
+        // 先获取中心图片的位置
+        var cen_imgX = $('.centerImg').offset().left;
+        var cen_imgY = $('.centerImg').offset().top;
+        var cen_imgSize = $('.centerImg').css('width');
+        
+        // 图标动画---目标位置距离文档的距离 - 当前图片距离文档的距离 = 当前图片定位要移动的距离
+        
+        $(this).find('.btns_bg img').css({opacity:1});
+        var moveLeft = cen_imgX - imgX;
+        var moveTop = cen_imgY - imgY;
+        
+        // 暂存this到that
+        that = this;
+        $(this).find('.btns_bg').stop().animate({
+            width : cen_imgSize,
+            height : cen_imgSize,
+            top : moveTop,
+            left: moveLeft,
+            opacity:1
+        },1000,function(){
+            
+            // 标题文字消失,1s后更新为中间的文字
+            $(that).find('span').text(cen_imgText);
+            $(that).find('span').stop().animate({opacity:1},300);
+            // 图片更新--并回到初始位置
+            $(that).find('img').attr('src',cen_imgSrc);
+            $(that).find('img').attr('imgName',cen_imgName);
+            // 图片隐藏
+            $(that).find('.btns_bg img').css({opacity:0});
+            $(that).find('.btns_bg').css({
+                width : imgSize,
+                height: imgSize,
+                top: 0,
+                left: 0
+            });
+
+            $('.intro_center').find('img').attr('imgName',imgName);
+            $('.intro_center').find('img').attr('src',imgSrc);
+            $('.intro_center').find('img').attr('imgText',imgText);
+
+            // 显示右侧介绍详情
+            $('.r_intro_text').find('.' + imgName ).siblings().stop().animate({top:20,opacity:0},100);
+            window.setTimeout(function(){
+                $('.r_intro_text').find('.' + imgName ).stop().animate({top: 0,opacity:1},600);
+                $('.r_intro_text').find('.' + imgName ).addClass('show_intro').siblings().removeClass('show_intro');
+
+            },50);
+            // 动画完成，将标识设置为不动画false
+            isMove = false;
+        });
+        // 动画-中部title
+        $('.intro_center_text').find('.' + imgName ).siblings().stop().animate({left:-40,opacity:0},300);
+        window.setTimeout(function(){
+            $('.intro_center_text').find('.' + imgName ).stop().animate({left: 0,opacity:1},1000);
+            $('.intro_center_text').find('.' + imgName ).addClass('show_text').siblings().removeClass('show_text');
+        },200);
+
+    }
+});
+    
 
 
 
@@ -108,7 +218,6 @@ $('.l_solutionTitle li').mouseenter(function(){
     // 先获取li的属性bgImg的值,组合成正确路径
     var bgImg = 'images/index/' + $(this).attr('bgImg');
     // 替换背景图
-    // $('.proSolution').css('background','url("' + bgImg + '") no-repeat top center');
     $('.proSolution').css({
         background:'url("' + bgImg + '") no-repeat top center',
         'background-color': 'rgb(0,0,0)'
@@ -116,13 +225,11 @@ $('.l_solutionTitle li').mouseenter(function(){
 
 
     // 将对应的div添加样式
-    if ( !$('.sol_detail_items').eq(inx).hasClass('show_items') ) {
-        $('.sol_detail_items').eq(inx).siblings().stop().animate({top:20,opacity:0},300);
-        window.setTimeout(function(){
-            $('.sol_detail_items').eq(inx).stop().animate({top: 0,opacity:1},1000);
-            $('.sol_detail_items').eq(inx).addClass('show_items').siblings().removeClass('show_items');
-        },200);
-    }
+    $('.sol_detail_items').eq(inx).siblings().stop().animate({top:20,opacity:0},300);
+    window.setTimeout(function(){
+        $('.sol_detail_items').eq(inx).stop().animate({top: 0,opacity:1},1000);
+        $('.sol_detail_items').eq(inx).addClass('show_items').siblings().removeClass('show_items');
+    },200);
 
 });
 // 解决方案----背景变化
@@ -201,54 +308,31 @@ function fnDatasCenterBG(event){
         // 判断条件，符合滚动区域内，移动距离 = （屏幕卷去内容-要开始滚动的距离）/2
         moveVal =  - moveVal / 2;
     }
-    console.log('moveVal'+moveVal);
     // 动画。
     element.stop().animate({
         'background-position-y': moveVal
     },300);
 
-    // 判断---过多冗余代码  ↑  简化代码
-    // if ( scrollToTop < datasCenterToPage - 100 ) {
-    //     $('.datasCenter').stop().animate({
-    //         'background-position-y': 0
-    //     },300);
-    // }
-    // if ( scrollToTop > datasCenterToPage - 100 ) {
-    //     // 满足条件，改变背景图片位置
-    //     // $('.datasCenter').css('background-position','50% -20px');
-    //     $('.datasCenter').stop().animate({
-    //         'background-position-y': -20
-    //     },300);
-    // }
-    // if ( scrollToTop > datasCenterToPage - 50 ) {
-    //     // 满足条件，改变背景图片位置
-    //     // $('.datasCenter').css('background-position','50% -40px');
-    //     $('.datasCenter').stop().animate({
-    //         'background-position-y': -40
-    //     },300);
-    // }
-    // if ( scrollToTop > datasCenterToPage ) {
-    //     // 满足条件，改变背景图片位置
-    //     // $('.datasCenter').css('background-position','50% -60px');
-    //     $('.datasCenter').stop().animate({
-    //         'background-position-y': -60
-    //     },300);
-    // }
-    // if ( scrollToTop > datasCenterToPage + 50 ) {
-    //     // 满足条件，改变背景图片位置
-    //     // $('.datasCenter').css('background-position','50% -80px');
-    //     $('.datasCenter').stop().animate({
-    //         'background-position-y': -80
-    //     },300);
-    // }
-    // if ( scrollToTop > datasCenterToPage + 100 ) {
-    //     // 满足条件，改变背景图片位置
-    //     // $('.datasCenter').css('background-position','50% -100px');
-    //     $('.datasCenter').stop().animate({
-    //         'background-position-y': -100
-    //     },300);
-    // }
 }
+
+
+// 数据中心介绍----图片淡入淡出显示
+// 获取  右侧图片到文档的距离
+var imgIntroduce = $('.imgIntroduce').offset().top;
+// 获取屏幕高度------卷去的内容应该比datasToPage少一个屏幕高度，才会有数字刚出现在屏幕下方时，开始增长的效果
+var screenH = $(window.innerHeight)[0];
+// 滚动事件
+$(window).on('scroll',function(){
+    // 获取滚动条卷去内容高度
+    var scrollToTop = $(this).scrollTop();
+    // 判断
+    if ( scrollToTop >= imgIntroduce-screenH ) {
+        // 添加动画。
+        $('.imgIntroduce').stop().fadeIn(300);
+    }else {
+        $('.imgIntroduce').stop().fadeOut(300);
+    }
+});
 
 
 
@@ -263,7 +347,7 @@ function fnDatasCenterBG(event){
 // 先获取数据支持区域中  要变换的数字   到文档的距离--
 var datasToPage = $('.datasShow').offset().top;
 // 获取屏幕高度------卷去的内容应该比datasToPage少一个屏幕高度，才会有数字刚出现在屏幕下方时，开始增长的效果
-var screenH = $(window.innerHeight)[0];
+// var screenH = $(window.innerHeight)[0];----上面获取过了
 $(window).on('scroll',fnDatasGrow);
 function fnDatasGrow () {
     // 获取滚动条卷去内容高度

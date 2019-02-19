@@ -1,3 +1,42 @@
+.aside {
+  width: 36px;
+  position: fixed;
+  right: 7px;
+  bottom: 80px;
+  z-index: 99;
+}
+.aside .aside_items {
+  width: 36px;
+  height: 36px;
+  background-color: #108cee;
+  text-align: center;
+  color: #fff;
+}
+.aside .aside_items i {
+  font-size: 18px;
+  line-height: 36px;
+  display: block;
+}
+.aside .aside_items span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  box-sizing: border-box;
+  font-size: 12px;
+  background-color: #209bfd;
+  display: none;
+}
+.aside .aside_items:hover i {
+  display: none;
+}
+.aside .aside_items:hover span {
+  display: block;
+  cursor: pointer;
+}
+.aside .backTop {
+  display: none;
+}
 .footer {
   background-color: #232526;
   padding: 40px 0 10px;

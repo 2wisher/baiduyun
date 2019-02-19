@@ -222,7 +222,9 @@ body {
     // 左侧图片
     .l_intro_picture {
         position: relative;
+        width: 706px;
         height: 552px;
+        // 背景线图片
         .intro_bg {
             width: 1200px;
             height: 552px;
@@ -249,6 +251,247 @@ body {
             .blackDotted:last-child {
                 top: 26px;
                 right: 304px;
+            }
+        }
+        // 按钮
+        .intro_btns {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 11;
+            // 圆形按钮
+            .circle_btns {
+                position: absolute;
+                div {
+                    width: 55px;
+                    height: 55px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .btns_border {
+                    box-sizing: border-box;
+                    border: 2px solid #ccc;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    .border_dashed {
+                        width: 69px;
+                        height: 69px;
+                        box-sizing: border-box;
+                        border: 1px dashed #8886f0;
+                        border-radius: 50%;
+                        top: -9px;
+                        left: -9px;
+                        transform: translate(-50%,-50%);
+                        opacity: 0;
+
+                        // 虚线转动动画名称
+                        animation-name: borderRotate; 
+
+                        /* 设置动画执行时间 */
+                        animation-duration: 6s;
+
+                        /* 设置动画执行次数 : 默认执行1次*/
+                        animation-iteration-count: infinite;
+
+                        /* 设置动画速度类型 */
+                        animation-timing-function: linear;
+
+                        /* 设置动画播放状态 */
+                        animation-play-state: paused;
+
+                    }
+            
+                }
+                .btns_bg {
+                    img {
+                        width: 100%;
+                        opacity: 0;
+                    }
+                }
+                .btns_bg_hover {
+                    img {
+                        opacity: 1;
+                    }
+                }
+                .btns_text {
+                    line-height: 55px;
+                    text-align: center;
+                }
+            }
+            .btns_1 {
+                top: 140px;
+                left: 30px;
+            }
+            .btns_2 {
+                top: 34px;
+                left: 198px;
+                div {
+                    width: 62px;
+                    height: 62px;
+                }
+                .btns_border {
+                    .border_dashed {
+                        width: 76px;
+                        height: 76px;
+                    }
+                }
+                .btns_text {
+                    line-height: 62px;
+                }
+            }
+            .btns_3 {
+                top: 100px;
+                left: 450px;
+                div {
+                    width: 65px;
+                    height: 65px;
+                }
+                .btns_border {
+                    .border_dashed {
+                        width: 79px;
+                        height: 79px;
+                    }
+                }
+                .btns_text {
+                    line-height: 65px;
+                }
+            }
+            .btns_4 {
+                top: 390px;
+                left: 545px;
+                div {
+                    width: 57px;
+                    height: 57px;
+                }
+                .btns_border {
+                    .border_dashed {
+                        width: 71px;
+                        height: 71px;
+                    }
+                }
+                .btns_text {
+                    line-height: 57px;
+                }
+            }
+    
+    
+            /* 定义动画集---虚线转动 */
+            @keyframes  borderRotate {
+    
+                /* 开始状态 */
+                from {
+                    transform: rotateZ(0deg);
+                }
+    
+                /* 结束状态 */
+                to {
+                   transform: rotateZ(360deg);
+                }
+            }
+
+        }
+        // 中心介绍区域---圆形
+        .intro_center {
+            width: 280px;
+            height: 280px;
+            position: absolute;
+            top: 164px;
+            left: 164px;
+            z-index: 1;
+            .center_small {
+                width: 200px;
+                height: 200px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                .centerImg {
+                    width: 76px;
+                    height: 76px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .center_small::before {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        .intro_center::before, .center_small::before {
+            content: "";
+            display: block;
+            box-shadow: 0 0 40px #aac8ff;
+            border-radius: 50%;
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .intro_center::before {
+            width: 280px;
+            height: 280px;
+        }
+        // 中心介绍区域--文字
+        .intro_center_text {
+            width: 190px;
+            height: 100px;
+            position: absolute;
+            top: 268px;
+            left: 342px;
+            overflow: hidden;
+            z-index: 1;
+            .titleText {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: -40px;
+                img {
+                    // width: 100%;
+                    height: 100%;
+                }
+                p {
+                    width: 178px;
+                    padding-left: 10px;
+                    height: 16px;
+                }
+                h2 {
+                    width: 178px;
+                    padding-left: 10px;
+                    height: 32px;
+                }
+                .linebox {
+                    width: 100%;
+                    margin: 10px 0;
+                    .line {
+                        display: block;
+                        width: 130px;
+                        height: 2px;
+                        background-color: #ccc;
+                        position: relative;
+                        .line_dotted {
+                            display: block;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            border: 2px solid #ccc;
+                            box-sizing: border-box;
+                            position: absolute;
+                            top: -3px;
+                            right: -8px;
+                        }
+                    }
+                }
+            }
+            .show_text {
+                left: 0px;
+                opacity: 1;
             }
         }
     }
@@ -694,23 +937,25 @@ body {
                 border-right: 1px solid #efefef;
                 box-sizing: border-box;
                 padding-left: 110px;
+                padding-right: 20px;
                 position: relative;
                 >a {
                     font-size: 16px;
                     line-height: 40px;
                 }
-                p {
+                p { 
+                    width: 100%;
+                    display: flex;
+                    span {
+                        flex: 1;
+                        text-align: center;
+                        color: #efefef;
+                    }
                     a {
-                        border-right: 1px solid #efefef;
-                        padding: 0 10px;
                         line-height: 24px;
-                    }
-                    a:last-child,a:nth-child(5n) {
-                        border-right: none;
-                        padding-right: 90px;
-                    }
-                    a:first-child,a:nth-child(6n) {
-                        padding-left: 0px;
+                        flex: 2;
+                        box-sizing: border-box;
+                        display: block;
                     }
                 }
             }

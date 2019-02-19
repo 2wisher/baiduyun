@@ -204,6 +204,7 @@ body {
 }
 .introduction .l_intro_picture {
   position: relative;
+  width: 706px;
   height: 552px;
 }
 .introduction .l_intro_picture .intro_bg {
@@ -229,6 +230,220 @@ body {
 .introduction .l_intro_picture .intro_bg .blackDotted:last-child {
   top: 26px;
   right: 304px;
+}
+.introduction .l_intro_picture .intro_btns {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 11;
+  /* 定义动画集---虚线转动 */
+}
+.introduction .l_intro_picture .intro_btns .circle_btns {
+  position: absolute;
+}
+.introduction .l_intro_picture .intro_btns .circle_btns div {
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.introduction .l_intro_picture .intro_btns .circle_btns .btns_border {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.introduction .l_intro_picture .intro_btns .circle_btns .btns_border .border_dashed {
+  width: 69px;
+  height: 69px;
+  box-sizing: border-box;
+  border: 1px dashed #8886f0;
+  border-radius: 50%;
+  top: -9px;
+  left: -9px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation-name: borderRotate;
+  /* 设置动画执行时间 */
+  animation-duration: 6s;
+  /* 设置动画执行次数 : 默认执行1次*/
+  animation-iteration-count: infinite;
+  /* 设置动画速度类型 */
+  animation-timing-function: linear;
+  /* 设置动画播放状态 */
+  animation-play-state: paused;
+}
+.introduction .l_intro_picture .intro_btns .circle_btns .btns_bg img {
+  width: 100%;
+  opacity: 0;
+}
+.introduction .l_intro_picture .intro_btns .circle_btns .btns_bg_hover img {
+  opacity: 1;
+}
+.introduction .l_intro_picture .intro_btns .circle_btns .btns_text {
+  line-height: 55px;
+  text-align: center;
+}
+.introduction .l_intro_picture .intro_btns .btns_1 {
+  top: 140px;
+  left: 30px;
+}
+.introduction .l_intro_picture .intro_btns .btns_2 {
+  top: 34px;
+  left: 198px;
+}
+.introduction .l_intro_picture .intro_btns .btns_2 div {
+  width: 62px;
+  height: 62px;
+}
+.introduction .l_intro_picture .intro_btns .btns_2 .btns_border .border_dashed {
+  width: 76px;
+  height: 76px;
+}
+.introduction .l_intro_picture .intro_btns .btns_2 .btns_text {
+  line-height: 62px;
+}
+.introduction .l_intro_picture .intro_btns .btns_3 {
+  top: 100px;
+  left: 450px;
+}
+.introduction .l_intro_picture .intro_btns .btns_3 div {
+  width: 65px;
+  height: 65px;
+}
+.introduction .l_intro_picture .intro_btns .btns_3 .btns_border .border_dashed {
+  width: 79px;
+  height: 79px;
+}
+.introduction .l_intro_picture .intro_btns .btns_3 .btns_text {
+  line-height: 65px;
+}
+.introduction .l_intro_picture .intro_btns .btns_4 {
+  top: 390px;
+  left: 545px;
+}
+.introduction .l_intro_picture .intro_btns .btns_4 div {
+  width: 57px;
+  height: 57px;
+}
+.introduction .l_intro_picture .intro_btns .btns_4 .btns_border .border_dashed {
+  width: 71px;
+  height: 71px;
+}
+.introduction .l_intro_picture .intro_btns .btns_4 .btns_text {
+  line-height: 57px;
+}
+@keyframes borderRotate {
+  /* 开始状态 */
+  from {
+    transform: rotateZ(0deg);
+  }
+  /* 结束状态 */
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+.introduction .l_intro_picture .intro_center {
+  width: 280px;
+  height: 280px;
+  position: absolute;
+  top: 164px;
+  left: 164px;
+  z-index: 1;
+}
+.introduction .l_intro_picture .intro_center .center_small {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.introduction .l_intro_picture .intro_center .center_small .centerImg {
+  width: 76px;
+  height: 76px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.introduction .l_intro_picture .intro_center .center_small .centerImg img {
+  width: 100%;
+}
+.introduction .l_intro_picture .intro_center .center_small::before {
+  width: 200px;
+  height: 200px;
+}
+.introduction .l_intro_picture .intro_center::before,
+.introduction .l_intro_picture .center_small::before {
+  content: "";
+  display: block;
+  box-shadow: 0 0 40px #aac8ff;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.introduction .l_intro_picture .intro_center::before {
+  width: 280px;
+  height: 280px;
+}
+.introduction .l_intro_picture .intro_center_text {
+  width: 190px;
+  height: 100px;
+  position: absolute;
+  top: 268px;
+  left: 342px;
+  overflow: hidden;
+  z-index: 1;
+}
+.introduction .l_intro_picture .intro_center_text .titleText {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: -40px;
+}
+.introduction .l_intro_picture .intro_center_text .titleText img {
+  height: 100%;
+}
+.introduction .l_intro_picture .intro_center_text .titleText p {
+  width: 178px;
+  padding-left: 10px;
+  height: 16px;
+}
+.introduction .l_intro_picture .intro_center_text .titleText h2 {
+  width: 178px;
+  padding-left: 10px;
+  height: 32px;
+}
+.introduction .l_intro_picture .intro_center_text .titleText .linebox {
+  width: 100%;
+  margin: 10px 0;
+}
+.introduction .l_intro_picture .intro_center_text .titleText .linebox .line {
+  display: block;
+  width: 130px;
+  height: 2px;
+  background-color: #ccc;
+  position: relative;
+}
+.introduction .l_intro_picture .intro_center_text .titleText .linebox .line .line_dotted {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  position: absolute;
+  top: -3px;
+  right: -8px;
+}
+.introduction .l_intro_picture .intro_center_text .show_text {
+  left: 0px;
+  opacity: 1;
 }
 .introduction .r_intro_text {
   width: 474px;
@@ -615,25 +830,27 @@ body {
   border-right: 1px solid #efefef;
   box-sizing: border-box;
   padding-left: 110px;
+  padding-right: 20px;
   position: relative;
 }
 .thirdServicer .thirdServicerEXP ul li > a {
   font-size: 16px;
   line-height: 40px;
 }
+.thirdServicer .thirdServicerEXP ul li p {
+  width: 100%;
+  display: flex;
+}
+.thirdServicer .thirdServicerEXP ul li p span {
+  flex: 1;
+  text-align: center;
+  color: #efefef;
+}
 .thirdServicer .thirdServicerEXP ul li p a {
-  border-right: 1px solid #efefef;
-  padding: 0 10px;
   line-height: 24px;
-}
-.thirdServicer .thirdServicerEXP ul li p a:last-child,
-.thirdServicer .thirdServicerEXP ul li p a:nth-child(5n) {
-  border-right: none;
-  padding-right: 90px;
-}
-.thirdServicer .thirdServicerEXP ul li p a:first-child,
-.thirdServicer .thirdServicerEXP ul li p a:nth-child(6n) {
-  padding-left: 0px;
+  flex: 2;
+  box-sizing: border-box;
+  display: block;
 }
 .thirdServicer .thirdServicerEXP ul li::before {
   content: "";
